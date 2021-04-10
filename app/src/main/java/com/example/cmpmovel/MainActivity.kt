@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun adicionar(view: View) {
-        var editText = findViewById<EditText>(R.id.editTextName)
+        var editText = findViewById<EditText>(R.id.textoTitulo)
         Log.d( "consoleTAG", editText.text.toString())
 
 

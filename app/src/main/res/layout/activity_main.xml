@@ -20,7 +20,7 @@
         android:paddingRight="16dp">
 
         <EditText
-            android:id="@+id/editTextName"
+            android:id="@+id/textoTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
