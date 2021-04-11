@@ -68,11 +68,11 @@ class Notas : AppCompatActivity(), CellClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        Log.d("consoleTAG", "Request Code  "+requestCode)
 
 
         if (requestCode == newNotaActivityCode ) {
-if(resultCode==Activity.RESULT_OK){
+                if(resultCode==Activity.RESULT_OK){
 
     val title = data?.getStringExtra(createNota.EXTRA_TITULO)
     val descricao = data?.getStringExtra(createNota.EXTRA_DESCRICAO)
@@ -93,14 +93,14 @@ if(resultCode==Activity.RESULT_OK){
         }else if(requestCode==editNotaActivityCode) {
             if (resultCode == Activity.RESULT_OK) {
                 if (data?.action == "DELETE") {
-                    val id = data?.getStringExtra(EXTRA_TITULO).toString()
+                    val id = data.getStringExtra(EXTRA_TITULO).toString()
                     notaViewModel.delete(Integer.parseInt(id))
 
                 } else {
-                    val id = data?.getStringExtra(EXTRA_ID).toString()
+                    val id = data?.getStringExtra(EXTRA_ID)
                     val titulo = data?.getStringExtra(EXTRA_TITULO).toString()
                     val descricao = data?.getStringExtra(EXTRA_DESCRICAO).toString()
-
+                    Log.d( "consoleTAG", "Verificar Variáveis na activity: " +id+" "+titulo+" "+descricao)
                     notaViewModel.update(Integer.parseInt(id), titulo, descricao)
                 }
 

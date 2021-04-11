@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CmpMovel">
-        <activity android:name=".createNota"></activity>
+        <activity android:name=".EditNota"></activity>
+        <activity android:name=".createNota" />
         <activity android:name=".Notas" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PaginaInicial">
