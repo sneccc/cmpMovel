@@ -23,13 +23,16 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-        <Button
-            android:id="@+id/buttonADD"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_height="wrap_content"
-            android:text="Insert item"
-            android:onClick="insert" />
-
     </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="add_nota"
+        android:src="@drawable/ic_baseline_add_24"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
