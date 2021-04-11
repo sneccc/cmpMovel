@@ -68,49 +68,52 @@ class Notas : AppCompatActivity(), CellClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.d("consoleTAG", "Request Code  "+requestCode)
+        Log.d("consoleTAG", "Request Code  " + requestCode)
 
 
-        if (requestCode == newNotaActivityCode ) {
-                if(resultCode==Activity.RESULT_OK){
-
-    val title = data?.getStringExtra(createNota.EXTRA_TITULO)
-    val descricao = data?.getStringExtra(createNota.EXTRA_DESCRICAO)
-    if (title!= null && descricao != null) {
-
-        val notaEnt = NotaEnt(titulo = title, descricao = descricao)
-        notaViewModel.insert(notaEnt)
-    }
-} else{
-    Toast.makeText(
-        applicationContext,"NOTA VAZIA"
-        ,
-        Toast.LENGTH_LONG).show()
-}
-
-
-
-        }else if(requestCode==editNotaActivityCode) {
+        if (requestCode == newNotaActivityCode) {
             if (resultCode == Activity.RESULT_OK) {
+
+                val title = data?.getStringExtra(createNota.EXTRA_TITULO)
+                val descricao = data?.getStringExtra(createNota.EXTRA_DESCRICAO)
+                if (title != null && descricao != null) {
+
+                    val notaEnt = NotaEnt(titulo = title, descricao = descricao)
+                    notaViewModel.insert(notaEnt)
+                }
+            } else {
+                Toast.makeText(
+                        applicationContext, "NOTA VAZIA"
+                        ,
+                        Toast.LENGTH_LONG).show()
+            }
+
+
+        } else if (requestCode == editNotaActivityCode) {
+            if (resultCode == Activity.RESULT_OK) {
+
+
                 if (data?.action == "DELETE") {
-                    val id = data.getStringExtra(EXTRA_TITULO).toString()
-                    notaViewModel.delete(Integer.parseInt(id))
+                    Log.d("consoleTAG", "Fez Delete")
+
+                    val id = data.getStringExtra(EXTRA_ID)
+                    notaViewModel.delete(Integer.parseInt(id)) //Faz Delete
 
                 } else {
+
+
                     val id = data?.getStringExtra(EXTRA_ID)
                     val titulo = data?.getStringExtra(EXTRA_TITULO).toString()
                     val descricao = data?.getStringExtra(EXTRA_DESCRICAO).toString()
-                    Log.d( "consoleTAG", "Verificar Variáveis na activity: " +id+" "+titulo+" "+descricao)
-                    notaViewModel.update(Integer.parseInt(id), titulo, descricao)
+                    Log.d("consoleTAG", "Verificar Variáveis na activity: " + id + " " + titulo + " " + descricao)
+
+                    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+                    notaViewModel.update(Integer.parseInt(id), titulo, descricao) //Faz Update
                 }
 
             } else {
                 Log.d("consoleTAG", "Não entrou")
-                Toast.makeText(
-                    applicationContext, "NO"
-                    ,
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(applicationContext, "NO", Toast.LENGTH_LONG).show()
             }
 
 
@@ -148,8 +151,8 @@ class Notas : AppCompatActivity(), CellClickListener {
     }
 
     override fun onCellClickListener(notaent: NotaEnt) {
-        val id =notaent.id.toString()
 
+        val id =notaent.id.toString()  //String
         val titulo =notaent.titulo
         val descricao =notaent.descricao
         //val data =notaent.data
