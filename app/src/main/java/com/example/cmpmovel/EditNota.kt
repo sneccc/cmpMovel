@@ -49,7 +49,7 @@ class EditNota : AppCompatActivity() {
             Toast.makeText(this,"EDITOU", Toast.LENGTH_LONG).show()
 
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(editTitulo.text)&&TextUtils.isEmpty(editDescricao.text)&&TextUtils.isEmpty(id)) {
+            if (TextUtils.isEmpty(editTitulo.text)||TextUtils.isEmpty(editDescricao.text)) {
 
                 setResult(Activity.RESULT_CANCELED, replyIntent)
                 Log.d( "consoleTAG", "Está empty")
@@ -87,7 +87,10 @@ class EditNota : AppCompatActivity() {
 
     }
 
-
+    override fun onStart() {
+        super.onStart()
+        supportActionBar?.setTitle("Editar Nota")
+    }
 
     companion object {
         const val EXTRA_TITULO = "titulo"

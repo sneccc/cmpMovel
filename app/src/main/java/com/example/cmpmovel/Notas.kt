@@ -16,9 +16,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cmpmovel.adapter.adapter
+import com.example.cmpmovel.api.EndPoints
+import com.example.cmpmovel.api.ServiceBuilder
+import com.example.cmpmovel.api.User
 import com.example.cmpmovel.entities.NotaEnt
 import com.example.cmpmovel.viewModel.NotaViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import retrofit2.Call
+import retrofit2.Response
+import java.util.*
+import javax.security.auth.callback.Callback
+
 //  notasPessoais
 class Notas : AppCompatActivity(), CellClickListener {
 
@@ -32,13 +40,15 @@ class Notas : AppCompatActivity(), CellClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notas)
 
+
+
+
+
         // recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val adapter = adapter(this,this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-
 
 
 
@@ -79,7 +89,7 @@ class Notas : AppCompatActivity(), CellClickListener {
                 if (title != null && descricao != null) {
 
                     val notaEnt = NotaEnt(titulo = title, descricao = descricao)
-                    notaViewModel.insert(notaEnt)
+                    notaViewModel.insert(notaEnt)   //Faz Insert
                 }
             } else {
                 Toast.makeText(

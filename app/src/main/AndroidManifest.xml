@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cmpmovel">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CmpMovel">
-        <activity android:name=".EditNota"></activity>
+        <activity android:name=".api.Ocorrencia"></activity>
+        <activity android:name=".EditNota" />
         <activity android:name=".createNota" />
         <activity android:name=".Notas" />
         <activity android:name=".PaginaInicial">
