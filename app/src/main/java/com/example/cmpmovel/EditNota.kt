@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.cmpmovel.viewModel.NotaViewModel
 import kotlinx.android.synthetic.main.activity_edit_nota.*
-import kotlinx.android.synthetic.main.recyclerline.*
 
 
 class EditNota : AppCompatActivity() {
@@ -38,18 +36,18 @@ class EditNota : AppCompatActivity() {
             titulo = extras.getString(EXTRA_TITULO)
             descricao = extras.getString(EXTRA_DESCRICAO)
 
-            editTitulo.setText(titulo)
-            editDescricao.setText(descricao)
+            editTituloReport.setText(titulo)
+            editDescricaoReport.setText(descricao)
         }
 
         //Quando clica-se para guardar os dados editados
-        val button = findViewById<Button>(R.id.nota_editar)
+        val button = findViewById<Button>(R.id.nota_editar_report)
         button.setOnClickListener{
 
             Toast.makeText(this,"EDITOU", Toast.LENGTH_LONG).show()
 
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(editTitulo.text)||TextUtils.isEmpty(editDescricao.text)) {
+            if (TextUtils.isEmpty(editTituloReport.text)||TextUtils.isEmpty(editDescricaoReport.text)) {
 
                 setResult(Activity.RESULT_CANCELED, replyIntent)
                 Log.d( "consoleTAG", "Está empty")
@@ -57,11 +55,11 @@ class EditNota : AppCompatActivity() {
 
 
                 replyIntent.putExtra(Notas.EXTRA_ID,id)
-                replyIntent.putExtra(createNota.EXTRA_TITULO,editTitulo.text.toString())
-                replyIntent.putExtra(createNota.EXTRA_DESCRICAO,editDescricao.text.toString() )
+                replyIntent.putExtra(createNota.EXTRA_TITULO,editTituloReport.text.toString())
+                replyIntent.putExtra(createNota.EXTRA_DESCRICAO,editDescricaoReport.text.toString() )
                 setResult(Activity.RESULT_OK, replyIntent)
 
-                Log.d( "consoleTAG", "Verificar Variáveis:"+id + editTitulo.text+editDescricao.text)
+                Log.d( "consoleTAG", "Verificar Variáveis:"+id + editTituloReport.text+editDescricaoReport.text)
 
             }
 
@@ -71,7 +69,7 @@ class EditNota : AppCompatActivity() {
 
         //Quando clica no botão eliminar
 
-        val button2 = findViewById<Button>(R.id.nota_eliminar)
+        val button2 = findViewById<Button>(R.id.nota_eliminar_report)
         button2.setOnClickListener{
             Log.d( "consoleTAG", "Botão delete")
            // intent?.setAction("DELETE")

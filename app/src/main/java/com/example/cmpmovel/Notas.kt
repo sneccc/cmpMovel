@@ -131,26 +131,6 @@ class Notas : AppCompatActivity(), CellClickListener {
     }
 
 
-    /*Clicar na nota para editar
-    override fun onCellClickListener(notaent:NotaEnt){
-        val id =notaent.id.toString()
-
-        val titulo =notaent.titulo
-        val descricao =notaent.descricao
-        //val data =notaent.data
-        val intent =Intent(this,EditNota::class.java).apply {
-            putExtra(EXTRA_ID,id)
-            putExtra(EXTRA_TITULO,titulo)
-            putExtra(EXTRA_DESCRICAO,descricao)
-           // putExtra(EXTRA_DATA,data)
-
-
-
-        }
-        startActivityForResult(intent,editNotaActivityCode)
-    }
-
-*/
 
     companion object {
         const val EXTRA_TITULO = "titulo"
@@ -170,8 +150,6 @@ class Notas : AppCompatActivity(), CellClickListener {
             putExtra(EXTRA_ID,id)
             putExtra(EXTRA_TITULO,titulo)
             putExtra(EXTRA_DESCRICAO,descricao)
-            // putExtra(EXTRA_DATA,data)
-
 
 
         }
@@ -179,33 +157,5 @@ class Notas : AppCompatActivity(), CellClickListener {
     }
 
 
-/*
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater:MenuInflater=menuInflater
-        inflater.inflate(R.menu.menu,menu)
-        //return super.onCreateOptionsMenu(menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId){
-    R.id.adicionar->{//Caso clicke em adicionar
-    Toast.makeText(this,"adicionar",Toast.LENGTH_SHORT).show()
-
-    //Mudar para activity de criação de nota
-    var variavel = "exemplo de variavel"
-    val intent= Intent(this,createNota::class.java).apply {
-        putExtra(PARAM_VARIAVEL,variavel)
-    }
-    startActivity(intent)
-
-
-    true
-}
-
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
- */
 }

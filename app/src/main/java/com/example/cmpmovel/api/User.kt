@@ -13,3 +13,10 @@ data class  Address(
         val city: String,
         val zipcode:String
 )
+
+
+data class Reporte(
+    val id:Int,
+    val titulo:String,
+    val descricao:String
+)

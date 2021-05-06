@@ -1,28 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".createNota"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditNota"
     android:orientation="horizontal">
 
 
     <Button
-        android:id="@+id/adicionar1"
-        android:layout_width="132dp"
+        android:id="@+id/nota_editar_report"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="110dp"
-        android:layout_marginLeft="110dp"
-        android:layout_marginEnd="118dp"
-        android:layout_marginRight="118dp"
-        android:layout_marginBottom="31dp"
-        android:text="Adicionar" />
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="198dp"
+        android:layout_marginRight="198dp"
+        android:layout_marginBottom="30dp"
+        android:text="EDITAR" />
+
+    <Button
+        android:id="@+id/nota_eliminar_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="221dp"
+        android:layout_marginLeft="221dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="30dp"
+        android:text="Eliminar" />
 
     <EditText
 
@@ -50,22 +66,22 @@ tools:context=".createNota"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
         android:layout_marginTop="94dp"
         android:text="Título"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="wrap_content"
+        android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTituloReport"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="73dp"
-        android:layout_marginEnd="227dp"
-        android:layout_marginRight="227dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="191dp"
+        android:layout_marginRight="191dp"
         android:text="Descrição"
         android:textSize="24sp" />
 

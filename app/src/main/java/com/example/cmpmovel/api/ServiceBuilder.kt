@@ -9,9 +9,9 @@ object ServiceBuilder {
 
     private val client = OkHttpClient.Builder().build()
 
-    private val retrofit =Retrofit.Builder().baseUrl("http://jsonplaceholder.typicode.com/").addConverterFactory(GsonConverterFactory.create()).client(client).build()
+    private val retrofit =Retrofit.Builder().baseUrl("https://myappecgm.000webhostapp.com/").addConverterFactory(GsonConverterFactory.create()).client(client).build()
 
-    fun<T> buildService(service:Class<T>):T{
+    fun<T> buildService(service :Class<T>):T{
         return retrofit.create(service)
     }
 }
