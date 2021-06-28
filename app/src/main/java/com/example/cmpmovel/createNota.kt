@@ -24,22 +24,25 @@ class createNota : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.adicionar1)
         button.setOnClickListener {
-            Toast.makeText(this,"CLICOU",Toast.LENGTH_LONG)
-            Log.d( "consoleTAG", "ClickListener")
+            Toast.makeText(this, "CLICOU", Toast.LENGTH_LONG)
+            Log.d("consoleTAG", "ClickListener")
             val replyIntent = Intent()
             if (TextUtils.isEmpty(titulo.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
-                Log.d( "consoleTAG", "Está empty")
+                Log.d("consoleTAG", "Está empty")
             } else {
-                val notatitulo= titulo.text.toString()
-                replyIntent.putExtra(EXTRA_TITULO,notatitulo)
 
-                val notadescricao= descricao.text.toString()
-                replyIntent.putExtra(EXTRA_DESCRICAO,notadescricao )
+                val report_titulo = titulo.text.toString()
+                replyIntent.putExtra(EXTRA_TITULO, report_titulo)
 
+                val report_desc = descricao.text.toString()
+                replyIntent.putExtra(EXTRA_DESCRICAO, report_desc)
+
+                val report_id = descricao.text.toString()
+                replyIntent.putExtra(EXTRA_ID, report_id)
 
                 setResult(Activity.RESULT_OK, replyIntent)
-                Log.d( "consoleTAG", "Não empty"+titulo.text.toString()+descricao.text.toString())
+
             }
             finish()
         }
@@ -48,8 +51,8 @@ class createNota : AppCompatActivity() {
     companion object {
         const val EXTRA_TITULO = "titulo"
         const val EXTRA_DESCRICAO = "descricao"
+        const val EXTRA_ID = "id"
     }
-
 
 
 }

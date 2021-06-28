@@ -11,6 +11,6 @@ interface EndPoints {
 
     @FormUrlEncoded
     @POST("/mySlim/api/reportes")
-    fun postTest(@Field(""))
+    fun postTest(@Field("titulo")titulo:String?,@Field("descricao")descricao:String?,@Field("id") id:Int?):Call<Reporte>
 
 }

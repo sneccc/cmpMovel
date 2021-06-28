@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cmpmovel.adapter.adapter
 import com.example.cmpmovel.api.EndPoints
 import com.example.cmpmovel.api.ServiceBuilder
-import com.example.cmpmovel.api.User
+
 import com.example.cmpmovel.entities.NotaEnt
 import com.example.cmpmovel.viewModel.NotaViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cmpmovel.R
 import com.example.cmpmovel.api.Reporte
-import com.example.cmpmovel.api.User
+
 
 class reportAdapter(val reports:List<Reporte>):RecyclerView.Adapter<ReportsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportsViewHolder {
