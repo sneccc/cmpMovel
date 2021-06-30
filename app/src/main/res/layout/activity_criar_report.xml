@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".createNota"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".api.CriarReport"
     android:orientation="horizontal">
 
 
     <Button
-        android:id="@+id/adicionar1"
-        android:layout_width="132dp"
+        android:id="@+id/nota_adicionar_report"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="110dp"
-        android:layout_marginLeft="110dp"
-        android:layout_marginEnd="118dp"
-        android:layout_marginRight="118dp"
-        android:layout_marginBottom="31dp"
-        android:text="Adicionar" />
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginRight="114dp"
+        android:layout_marginBottom="35dp"
+        android:text="Adicionar"
+
+       />
 
     <EditText
 
@@ -34,14 +36,14 @@ tools:context=".createNota"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginRight="120dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginRight="140dp"
         android:ems="10"
 
-        android:hint="Escreva um título"/>
+        android:hint="Escreva um título" />
 
     <TextView
         android:id="@+id/tituloTextView"
@@ -50,22 +52,22 @@ tools:context=".createNota"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="94dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginLeft="101dp"
+        android:layout_marginTop="140dp"
         android:text="Título"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/descricaoTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_Titulo_Nota"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="73dp"
-        android:layout_marginEnd="227dp"
-        android:layout_marginRight="227dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="210dp"
+        android:layout_marginRight="210dp"
         android:text="Descrição"
         android:textSize="24sp" />
 
@@ -78,11 +80,15 @@ tools:context=".createNota"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="123dp"
-        android:layout_marginRight="123dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="141dp"
+        android:layout_marginRight="141dp"
         android:ems="10"
-        android:hint="Escreva uma descrição"/>
+        android:hint="Escreva uma descrição" />
+
+
+
+
 </RelativeLayout>

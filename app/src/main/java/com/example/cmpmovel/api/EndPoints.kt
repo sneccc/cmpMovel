@@ -11,6 +11,19 @@ interface EndPoints {
 
     @FormUrlEncoded
     @POST("/mySlim/api/reportes")
-    fun postTest(@Field("titulo")titulo:String?,@Field("descricao")descricao:String?,@Field("id") id:Int?):Call<Reporte>
+    fun postTest(@Field("titulo")titulo:String?,@Field("descricao")descricao:String?):Call<Reporte>//Testar AutoIncrement @Field("id") id:Int?
+
+
+
+    @POST("/mySlim/api/reportes/delete/{id}")
+    fun deleteReporte(@Path("id")id:Int):Call<Reporte>
+
+    @FormUrlEncoded
+    @POST("/mySlim/api/reportes/edit/{id}")
+    fun editReporte(@Path("id")id:Int,@Field("descricao")descricao:String?,@Field("titulo")titulo:String?):Call<Reporte>
+
+
+    //@PUT("/mySlim/api/reportes/{id}")
+    //fun putReport(@Path("id")id:Int):Call<Reporte>
 
 }

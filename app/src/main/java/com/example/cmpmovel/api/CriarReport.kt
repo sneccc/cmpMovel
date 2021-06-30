@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import com.example.cmpmovel.R
 import com.example.cmpmovel.createNota
 
-class editReport : AppCompatActivity() {
+class CriarReport : AppCompatActivity() {
 
     private lateinit var titulo: EditText
     private lateinit var descricao: EditText
@@ -20,23 +20,25 @@ class editReport : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_report)
+        setContentView(R.layout.activity_criar_report)
 
 
-        titulo = findViewById(R.id.editTituloReport)
-        descricao = findViewById(R.id.editDescricaoReport)
-        id=findViewById(R.id.id_report)
+
+        titulo = findViewById(R.id.edit_Titulo_Nota)
+        descricao = findViewById(R.id.edit_descricao_Nota)
+
+
 
         val adicionar = findViewById<Button>(R.id.nota_adicionar_report)
 
         adicionar.setOnClickListener {
-
+            Log.d( "consoleTAG", "Clicou Adicionar!, Variáveis que foi buscar :"+titulo.text+descricao.text)
 
             val replyIntent = Intent()
 
-            if (TextUtils.isEmpty(titulo.text)||TextUtils.isEmpty(descricao.text)||TextUtils.isEmpty(id.text)) {
+            if (TextUtils.isEmpty(titulo.text)||TextUtils.isEmpty(descricao.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
-
+                Log.d( "consoleTAG", "Cancelado pq alguns parametros estão vazios")
             } else {
 
                 val notatitulo= titulo.text.toString()
@@ -52,4 +54,8 @@ class editReport : AppCompatActivity() {
             finish()
         }
     }
+
+
+
+
 }
