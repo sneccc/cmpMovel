@@ -16,9 +16,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cmpmovel.adapter.adapter
+import com.example.cmpmovel.api.EndPoints
+import com.example.cmpmovel.api.ServiceBuilder
+import com.example.cmpmovel.api.User
 import com.example.cmpmovel.entities.NotaEnt
 import com.example.cmpmovel.viewModel.NotaViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import retrofit2.Call
+import retrofit2.Response
+import java.util.*
+import javax.security.auth.callback.Callback
+
 //  notasPessoais
 class Notas : AppCompatActivity(), CellClickListener {
 
@@ -32,13 +40,15 @@ class Notas : AppCompatActivity(), CellClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notas)
 
+
+
+
+
         // recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val adapter = adapter(this,this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-
 
 
 
@@ -79,7 +89,7 @@ class Notas : AppCompatActivity(), CellClickListener {
                 if (title != null && descricao != null) {
 
                     val notaEnt = NotaEnt(titulo = title, descricao = descricao)
-                    notaViewModel.insert(notaEnt)
+                    notaViewModel.insert(notaEnt)   //Faz Insert
                 }
             } else {
                 Toast.makeText(
@@ -121,26 +131,6 @@ class Notas : AppCompatActivity(), CellClickListener {
     }
 
 
-    /*Clicar na nota para editar
-    override fun onCellClickListener(notaent:NotaEnt){
-        val id =notaent.id.toString()
-
-        val titulo =notaent.titulo
-        val descricao =notaent.descricao
-        //val data =notaent.data
-        val intent =Intent(this,EditNota::class.java).apply {
-            putExtra(EXTRA_ID,id)
-            putExtra(EXTRA_TITULO,titulo)
-            putExtra(EXTRA_DESCRICAO,descricao)
-           // putExtra(EXTRA_DATA,data)
-
-
-
-        }
-        startActivityForResult(intent,editNotaActivityCode)
-    }
-
-*/
 
     companion object {
         const val EXTRA_TITULO = "titulo"
@@ -160,8 +150,6 @@ class Notas : AppCompatActivity(), CellClickListener {
             putExtra(EXTRA_ID,id)
             putExtra(EXTRA_TITULO,titulo)
             putExtra(EXTRA_DESCRICAO,descricao)
-            // putExtra(EXTRA_DATA,data)
-
 
 
         }
@@ -169,33 +157,5 @@ class Notas : AppCompatActivity(), CellClickListener {
     }
 
 
-/*
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater:MenuInflater=menuInflater
-        inflater.inflate(R.menu.menu,menu)
-        //return super.onCreateOptionsMenu(menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId){
-    R.id.adicionar->{//Caso clicke em adicionar
-    Toast.makeText(this,"adicionar",Toast.LENGTH_SHORT).show()
-
-    //Mudar para activity de criação de nota
-    var variavel = "exemplo de variavel"
-    val intent= Intent(this,createNota::class.java).apply {
-        putExtra(PARAM_VARIAVEL,variavel)
-    }
-    startActivity(intent)
-
-
-    true
-}
-
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
- */
 }

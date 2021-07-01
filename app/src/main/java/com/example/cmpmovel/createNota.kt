@@ -19,8 +19,8 @@ class createNota : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_nota)
 
-        titulo = findViewById(R.id.editTitulo)
-        descricao = findViewById(R.id.editDescricao)
+        titulo = findViewById(R.id.editTituloReport)
+        descricao = findViewById(R.id.editDescricaoReport)
 
         val button = findViewById<Button>(R.id.adicionar1)
         button.setOnClickListener {
