@@ -1,18 +1,7 @@
 package com.example.cmpmovel.api
 
 
-
-data class User (
-    val id:Int,
-    val name:String,
-    val email:String,
-    val address: Address
-)
-
-data class  Address(
-        val city: String,
-        val zipcode:String
-)
+//Class que representa o que vamos receber como output do serviço
 
 
 data class Reporte(
@@ -20,3 +9,4 @@ data class Reporte(
     val titulo:String,
     val descricao:String
 )
+
