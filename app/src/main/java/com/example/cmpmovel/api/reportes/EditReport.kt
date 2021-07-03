@@ -1,4 +1,4 @@
-package com.example.cmpmovel.api
+package com.example.cmpmovel.api.reportes
 
 import android.app.Activity
 import android.content.Intent
@@ -7,12 +7,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
-import androidx.lifecycle.ViewModelProvider
-import com.example.cmpmovel.EditNota
-import com.example.cmpmovel.Notas
 import com.example.cmpmovel.R
-import com.example.cmpmovel.createNota
-import com.example.cmpmovel.viewModel.NotaViewModel
 import kotlinx.android.synthetic.main.activity_edit_nota.*
 
 class EditReport : AppCompatActivity() {
@@ -51,9 +46,9 @@ class EditReport : AppCompatActivity() {
             }else{
 
 
-                replyIntent.putExtra(EditReport.EXTRA_ID,id)
-                replyIntent.putExtra(EditReport.EXTRA_TITULO,edit_Titulo_Nota.text.toString())
-                replyIntent.putExtra(EditReport.EXTRA_DESCRICAO,edit_descricao_Nota.text.toString() )
+                replyIntent.putExtra(EXTRA_ID,id)
+                replyIntent.putExtra(EXTRA_TITULO,edit_Titulo_Nota.text.toString())
+                replyIntent.putExtra(EXTRA_DESCRICAO,edit_descricao_Nota.text.toString() )
                 setResult(Activity.RESULT_OK, replyIntent)
 
                 Log.d( "consoleTAG", "Sucesso! Verificar Variáveis:" + id+edit_Titulo_Nota.text+edit_descricao_Nota.text)
@@ -79,7 +74,7 @@ class EditReport : AppCompatActivity() {
 
 
 
-                replyIntent.putExtra(EditReport.EXTRA_ID,id)
+                replyIntent.putExtra(EXTRA_ID,id)
 
                 setResult(3, replyIntent)
 

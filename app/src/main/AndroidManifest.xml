@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -21,8 +22,10 @@
         android:theme="@style/Theme.CmpMovel"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".api.EditReport"></activity>
-        <activity android:name=".api.CriarReport" />
+        <activity android:name=".api.mapa.CriarMarcador"></activity>
+        <activity android:name=".api.mapa.EditarMarcador" />
+        <activity android:name=".api.reportes.EditReport" />
+        <activity android:name=".api.reportes.CriarReport" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -36,10 +39,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".api.MapsActivity"
+            android:name=".api.mapa.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".MenuLogin" />
-        <activity android:name=".api.Ocorrencia" />
+        <activity android:name=".api.reportes.Ocorrencia" />
         <activity android:name=".EditNota" />
         <activity android:name=".createNota" />
         <activity android:name=".Notas" />

@@ -1,4 +1,4 @@
-package com.example.cmpmovel.api
+package com.example.cmpmovel.api.reportes
 
 import android.app.Activity
 import android.content.Intent
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import com.example.cmpmovel.R
@@ -29,7 +28,7 @@ class CriarReport : AppCompatActivity() {
 
 
 
-        val adicionar = findViewById<Button>(R.id.nota_adicionar_report)
+        val adicionar = findViewById<Button>(R.id.criar_marcador)
 
         adicionar.setOnClickListener {
             Log.d( "consoleTAG", "Clicou Adicionar!, Variáveis que foi buscar :"+titulo.text+descricao.text)
