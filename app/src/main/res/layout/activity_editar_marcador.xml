@@ -79,7 +79,7 @@ android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/criar_marcador"
+            android:id="@+id/editar_marcador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 

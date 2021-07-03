@@ -30,9 +30,13 @@ interface EndPoints {
     fun getMarcadores():Call<List<Marcador>>
 
     //Criar um marcador
+   // @Headers("Content-Type: application/json")
+
     @FormUrlEncoded
     @POST("/mySlim/api/marcadores")
-    fun postMarcador(@Field("titulo_marcador")titulo_marcador:String?,@Field("desc_marcador")desc_marcador:String?,@Field("lat_marcador")lat_marcador:Double?,@Field("lat_marcador")lon_marcador:Double?):Call<Marcador>
+    fun postMarcador(@Field("titulo")titulo:String,@Field("desc")desc:String,@Field("lat")lat:Double,@Field("lon")lon:Double):Call<Marcador>
+
+
 
     //Eliminar Marcador
     @POST("/mySlim/api/marcadores/delete/{id}")

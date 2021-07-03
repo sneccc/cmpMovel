@@ -38,7 +38,7 @@ class EditarMarcador : AppCompatActivity() {
         }
 
 
-        val editarMarcador = findViewById<Button>(R.id.criar_marcador)
+        val editarMarcador = findViewById<Button>(R.id.editar_marcador)
         editarMarcador.setOnClickListener   {
             val replyIntent = Intent()
 

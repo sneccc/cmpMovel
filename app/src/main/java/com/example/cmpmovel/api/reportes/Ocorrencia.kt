@@ -77,10 +77,7 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
                 if (title != null && descricao != null ) {//&&id !=null
 
                     //Retrofit
-                    val request =
-                        ServiceBuilder.buildService(
-                            EndPoints::class.java
-                        )//Instancia do nosso serviço , que permite fazer chamadas http
+                    val request =ServiceBuilder.buildService(EndPoints::class.java)//Instancia do nosso serviço , que permite fazer chamadas http
                     val call = request.postTest(title,descricao)//Chamar o endpoint postTest com parametros
 
                     call.enqueue(object : Callback<Reporte> {
@@ -88,23 +85,10 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
                         override fun onResponse(call: Call<Reporte>, response: Response<Reporte>) {
                             if (response.isSuccessful) {
                                 Log.d("consoleTAG", "Sucesso-> "+response)
-                               // val intent= Intent(this,Ocorrencia::class.java)
-                              //  startActivity(intent)
-
-
-                           //     recyclerView.apply {
-                            //        adapter.notifyItemInserted()
-                             //   }
-                               //val c:Reporte=response.body()!!
-                               // Toast.makeText(this@Ocorrencia, "Responsta sem falha"+c.id+c.titulo+"-"+c.descricao, Toast.LENGTH_LONG).show()
-                           //     Log.d( "consoleTAG", "ResponseBody ->$c")
-
                             }
                         }
 
                         override fun onFailure(call: Call<Reporte>, t: Throwable) {
-                           // Toast.makeText(this@Ocorrencia, "${t.message}", Toast.LENGTH_LONG)
-                              //  .show()
                             Log.d("consoleTAG", "Falhou-> "+t.message.toString())
                         }
 

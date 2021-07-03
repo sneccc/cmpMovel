@@ -28,7 +28,7 @@ class CriarReport : AppCompatActivity() {
 
 
 
-        val adicionar = findViewById<Button>(R.id.criar_marcador)
+        val adicionar = findViewById<Button>(R.id.criar_report)
 
         adicionar.setOnClickListener {
             Log.d( "consoleTAG", "Clicou Adicionar!, Variáveis que foi buscar :"+titulo.text+descricao.text)

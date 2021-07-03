@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.cmpmovel.R
 import com.example.cmpmovel.api.*
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.example.cmpmovel.createNota
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
@@ -26,14 +26,18 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
     private lateinit var mMap: GoogleMap
     private lateinit var marcadores: List<Marcador>
     private lateinit var lastlocation: Location
     private lateinit var fusedLocationCliente: FusedLocationProviderClient
+    private lateinit var locationRequest:LocationRequest
+    private lateinit var locationCallback:LocationCallback
     private val EditMarcadorCode = 4
     private val ElimnarMarcadorCode = 5
     private val CriarMarcadorCode =6
+    private lateinit var localizacaoAtual:LatLng
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
@@ -45,8 +49,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         //initialize fusedlocationCliente -------------
         fusedLocationCliente = LocationServices.getFusedLocationProviderClient(this)
 
+        locationCallback =object :LocationCallback(){
+            override fun onLocationResult(p0: LocationResult) {
+                super.onLocationResult(p0)
+                lastlocation=p0.lastLocation
+                var loc =LatLng(lastlocation.latitude,lastlocation.longitude)
+               // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15.0f))
+                localizacaoAtual=loc
+            }
+        }
     preencherMarcadores()
 
+        createLocationRequest()
+    }
+
+    private fun createLocationRequest() {
+        locationRequest=LocationRequest()
+        //Intervalo que app vai receber updates
+        locationRequest.interval=10000
+        locationRequest.priority=LocationRequest.PRIORITY_HIGH_ACCURACY
+    }
+
+    override fun onPause() {
+        super.onPause()
+        fusedLocationCliente.removeLocationUpdates(locationCallback)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startLocationUpdates()//Começar a receber updates
+    }
+
+    private fun startLocationUpdates() {//Verificar se existem permissões
+        if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),LOCATION_PERMISSION_REQUEST_CODE)
+            return
+        }
+        fusedLocationCliente.requestLocationUpdates(locationRequest,locationCallback,null/*looper*/)
     }
 
     private fun preencherMarcadores() {
@@ -305,6 +344,41 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
 
             }}
+
+        }else if(requestCode == CriarMarcadorCode){
+            if (resultCode == Activity.RESULT_OK){
+                val title = data!!.getStringExtra(MapsActivity.EXTRA_TITULO)
+                val descricao = data!!.getStringExtra(MapsActivity.EXTRA_DESCRICAO)
+                //Obter coordenadas atuais
+                val lat=localizacaoAtual.latitude
+                val lon=localizacaoAtual.longitude
+                if (title != null && descricao != null && lat!=null && lon!=null ) {
+                    Log.d("consoleTAG", "Variavies Cirar Marcador $title, $descricao, $lat, $lon")
+
+                    //Retrofit
+                    val request =ServiceBuilder.buildService(EndPoints::class.java)     //Instancia do nosso serviço , que permite fazer chamadas http
+                    val call = request.postMarcador(title,descricao,lat,lon)                          //Chamar o endpoint postTest com parametros
+
+                    call.enqueue(object : Callback<Marcador> {
+
+                        override fun onResponse(call: Call<Marcador>, response: Response<Marcador>) {
+                            if (response.isSuccessful) {
+                                Log.d("consoleTAG", "Sucesso Criar Marcador -> "+response)
+                                mMap.clear()//Ajuda a resetar o mapa para atualizar os marcadores
+                                preencherMarcadores() //Preenche os marcadores no mapa denovo
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Marcador>, t: Throwable) {
+                            Log.d("consoleTAG", "Falhou-> ${t.stackTrace}   ${t.cause}    ${t.localizedMessage}")
+                        }
+
+                    })
+
+                }
+
+            }
+
 
         }
 
