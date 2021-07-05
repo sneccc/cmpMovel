@@ -20,3 +20,8 @@ data class Marcador(
         val lon_marcador: Double
 )
 
+//
+data class Login(
+
+    val isVali:Int
+)
