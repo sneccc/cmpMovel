@@ -1,5 +1,6 @@
 package com.example.cmpmovel.api
 
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 interface EndPoints {
@@ -51,4 +52,14 @@ interface EndPoints {
     @POST("/mySlim/api/marcadores/edit/{id}")
     fun editMarcador(@Path("id")id:Int,@Field("desc_marcador")desc_marcador:String?,@Field("titulo_marcador")titulo_marcador:String?,
                      @Field("lat_marcador")lat_marcador:Double?,@Field("lon_marcador")lon_marcador:Double?):Call<Marcador>
+
+
+    //--------------
+
+    //Login
+
+    @FormUrlEncoded
+    @POST("/mySlim/api/login")
+    fun checkLogin(@Field("username")username:String,@Field("password")password:String):Call<Login>//Testar AutoIncrement @Field("id") id:Int?
+
 }

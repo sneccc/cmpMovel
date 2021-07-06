@@ -118,7 +118,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             }
 
             override fun onFailure(call: Call<List<Marcador>>, t: Throwable) {
-                Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -177,8 +177,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             fusedLocationCliente.lastLocation.addOnSuccessListener(this) { location ->
                 if (location != null) {//Buscar a localização e centrar o mapa na posição atual
                     lastlocation = location
-                    Toast.makeText(this@MapsActivity, lastlocation.toString(), Toast.LENGTH_SHORT)
-                        .show()
+                  //  Toast.makeText(this@MapsActivity, lastlocation.toString(), Toast.LENGTH_SHORT).show()
+
                     val currentLatLng = LatLng(location.latitude, location.longitude)
                     var meuMarcador = mMap.addMarker(
                         MarkerOptions().position(currentLatLng)
@@ -198,17 +198,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
         // Quando marcador não tem tag criamos
         if (marker.tag == null) {
-            Toast.makeText(this, "Não tem Tag", Toast.LENGTH_SHORT).show()
+          //  Toast.makeText(this, "Não tem Tag", Toast.LENGTH_SHORT).show()
             marker.tag = 0
         } else {//Verificamos o duplo click
             var clickCount = marker.tag as Int
             var newClickCount = clickCount + 1
-            abrirMarcador(marker)
+
 
             //Duplo Click
             if (newClickCount == 2) {
                 Toast.makeText(this, "Duplo Click", Toast.LENGTH_SHORT).show()
                 newClickCount = 0
+                abrirMarcador(marker)
 
             }
             if (newClickCount > 2) {
@@ -223,7 +224,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         val split = marker.title.split(':')
         val ID_Marcador = split[1].toInt()
 
-        Toast.makeText(this, "Numero ${ID_Marcador}", Toast.LENGTH_SHORT).show()
+        //.makeText(this, "Numero ${ID_Marcador}", Toast.LENGTH_SHORT).show()
 
         Log.d("consoleTAG", "Marcador ID-->" + ID_Marcador)
         //Buscar informações deste Marcador pelo ID
@@ -250,7 +251,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
             override fun onFailure(call: Call<List<Marcador>>, t: Throwable) {
                 Log.d("consoleTAG", "Request Marcador Falhou ")
-                Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -312,7 +313,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                         }
 
                         override fun onFailure(call: Call<Marcador>, t: Throwable) {
-                            Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_LONG).show()
+                           // Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_LONG).show()
                             Log.d("consoleTAG", "Falhou editar->" + t.message.toString() +call.toString()+t.stackTrace)
                         }
 
@@ -336,7 +337,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                         }
 
                         override fun onFailure(call: Call<Marcador>, t: Throwable) {
-                            Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_LONG).show()
+                         //   Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_LONG).show()
                             Log.d("consoleTAG", "Falhou DELETAR MARCADOR->" + t.message)
                         }
 
