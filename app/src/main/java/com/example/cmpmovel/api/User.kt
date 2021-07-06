@@ -10,3 +10,13 @@ data class Reporte(
     val descricao:String
 )
 
+
+//o que vou receber como output do request
+data class Marcador(
+        val id:Int,
+        val titulo_marcador:String,
+        val desc_marcador:String,
+        val lat_marcador:Double,
+        val lon_marcador: Double
+)
+

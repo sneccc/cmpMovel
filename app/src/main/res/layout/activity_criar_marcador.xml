@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".api.mapa.CriarMarcador"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="50dp"
+    >
+
+
+    <TextView
+        android:id="@+id/tituloTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Título"
+        android:textSize="24sp" />
+
+    <EditText
+
+        android:id="@+id/criar_Titulo_Marcador"
+        android:layout_width="216dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloTextView"
+
+        android:layout_marginBottom="20dp"
+        android:hint="Escreva um título" />
+
+
+    <TextView
+        android:id="@+id/descricaoTextView"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+
+        android:text="Descrição"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/criar_descricao_Marcador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:hint="Escreva uma descrição" />
+
+    <TextView
+        android:id="@+id/tituloTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Coordenadas"
+        android:textSize="24sp" />
+
+    <EditText
+
+        android:id="@+id/criar_longitude"
+        android:layout_width="216dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloTextView"
+
+
+        android:hint="Longitude" />
+
+    <EditText
+
+        android:id="@+id/criar_latitude"
+        android:layout_width="216dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloTextView"
+        android:layout_marginBottom="20dp"
+
+        android:hint="Latitude" />
+
+    <Button
+        android:id="@+id/criar_marcador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Adicionar"
+
+        />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

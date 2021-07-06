@@ -1,4 +1,4 @@
-package com.example.cmpmovel.api
+package com.example.cmpmovel.api.reportes
 
 import android.app.Activity
 import android.content.Intent
@@ -6,14 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cmpmovel.*
 import com.example.cmpmovel.adapter.OnReportListener
-import com.example.cmpmovel.adapter.adapter
 import com.example.cmpmovel.adapter.reportAdapter
+import com.example.cmpmovel.api.*
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +28,9 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
         setContentView(R.layout.activity_ocorrencia)
 
 
-        val request = ServiceBuilder.buildService(EndPoints::class.java)//Instancia do  serviço , que permite fazer chamadas http, que está no servicebuilder
+        val request = ServiceBuilder.buildService(
+            EndPoints::class.java
+        )//Instancia do  serviço , que permite fazer chamadas http, que está no servicebuilder
         val call = request.getReportes()//Chamar o getReportes situado nos Endpoints
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_oco)
 
@@ -76,32 +77,19 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
                 if (title != null && descricao != null ) {//&&id !=null
 
                     //Retrofit
-                    val request = ServiceBuilder.buildService(EndPoints::class.java)//Instancia do nosso serviço , que permite fazer chamadas http
+                    val request =ServiceBuilder.buildService(EndPoints::class.java)//Instancia do nosso serviço , que permite fazer chamadas http
                     val call = request.postTest(title,descricao)//Chamar o endpoint postTest com parametros
 
                     call.enqueue(object : Callback<Reporte> {
 
                         override fun onResponse(call: Call<Reporte>, response: Response<Reporte>) {
                             if (response.isSuccessful) {
-
-                               // val intent= Intent(this,Ocorrencia::class.java)
-                              //  startActivity(intent)
-
-
-                           //     recyclerView.apply {
-                            //        adapter.notifyItemInserted()
-                             //   }
-                               //val c:Reporte=response.body()!!
-                               // Toast.makeText(this@Ocorrencia, "Responsta sem falha"+c.id+c.titulo+"-"+c.descricao, Toast.LENGTH_LONG).show()
-                           //     Log.d( "consoleTAG", "ResponseBody ->$c")
-
+                                Log.d("consoleTAG", "Sucesso-> "+response)
                             }
                         }
 
                         override fun onFailure(call: Call<Reporte>, t: Throwable) {
-                            Toast.makeText(this@Ocorrencia, "${t.message}", Toast.LENGTH_LONG)
-                                .show()
-                            Log.d("consoleTAG", "Falhou->${t.message}")
+                            Log.d("consoleTAG", "Falhou-> "+t.message.toString())
                         }
 
                     })
@@ -120,7 +108,10 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
                 if (title != null && descricao != null) {
                     Log.d("consoleTAG", "Verificar Variáveis na chegada ->ID :"+id+" titulo :"+title+"descrição :"+descricao)
                     //Retrofit
-                    val request = ServiceBuilder.buildService(EndPoints::class.java)//Instancia do nosso serviço , que permite fazer chamadas http
+                    val request =
+                        ServiceBuilder.buildService(
+                            EndPoints::class.java
+                        )//Instancia do nosso serviço , que permite fazer chamadas http
                     val call = request.editReporte(id,descricao,title)
 
                     call.enqueue(object : Callback<Reporte> {
@@ -133,9 +124,8 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
                         }
 
                         override fun onFailure(call: Call<Reporte>, t: Throwable) {
-                            Toast.makeText(this@Ocorrencia, "${t.message}", Toast.LENGTH_LONG)
-                                    .show()
-                            Log.d("consoleTAG", "Falhou->" + t.message)
+                            Toast.makeText(this@Ocorrencia, "${t.message}", Toast.LENGTH_LONG).show()
+                            Log.d("consoleTAG", "Falhou editar->" + t.message.toString() +call.toString()+t.stackTrace)
                         }
 
                     })
@@ -145,7 +135,10 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
             }else if(resultCode==eliminarResponseCode){
                 val id = data!!.getIntExtra(EditReport.EXTRA_ID,0)
                 if (id!=null){
-                    val request = ServiceBuilder.buildService(EndPoints::class.java)//Instancia do nosso serviço , que permite fazer chamadas http
+                    val request =
+                        ServiceBuilder.buildService(
+                            EndPoints::class.java
+                        )//Instancia do nosso serviço , que permite fazer chamadas http
                     val call = request.deleteReporte(id)
 
                     call.enqueue(object : Callback<Reporte> {
@@ -158,9 +151,8 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
                         }
 
                         override fun onFailure(call: Call<Reporte>, t: Throwable) {
-                            Toast.makeText(this@Ocorrencia, "${t.message}", Toast.LENGTH_LONG)
-                                    .show()
-                            Log.d("consoleTAG", "Falhou->" + t.message)
+                           Toast.makeText(this@Ocorrencia, "${t.message}", Toast.LENGTH_LONG).show()
+                            Log.d("consoleTAG", "Falhou ELIMINAR->" + t.message)
                         }
 
                     })
@@ -170,7 +162,7 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
 
         }
 
-        val intent= Intent(this,Ocorrencia::class.java)
+        val intent= Intent(this, Ocorrencia::class.java)
           startActivity(intent)
     }
 
@@ -191,9 +183,9 @@ class Ocorrencia : AppCompatActivity() ,OnReportListener{
         val titulo =report.titulo
         val descricao =report.descricao
         val intent =Intent(this, EditReport::class.java).apply {
-            putExtra(Ocorrencia.EXTRA_ID,id)
-            putExtra(Ocorrencia.EXTRA_TITULO,titulo)
-            putExtra(Ocorrencia.EXTRA_DESCRICAO,descricao)
+            putExtra(EXTRA_ID,id)
+            putExtra(EXTRA_TITULO,titulo)
+            putExtra(EXTRA_DESCRICAO,descricao)
         }
         startActivityForResult(intent,editReportCode)
     }
